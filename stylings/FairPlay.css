@@ -1,13 +1,13 @@
 :root {
     /* --- Primary Brand Colors --- */
-    --primary: #7E9271; /* dusty olive*/
-    --secondary: #C57C58; /* cinnamon wood */
-    --tertiary: #F0AA85; /* tangerine dream */
+    --primary: #446E1B; /* fern */
+    --secondary: #E94F37; /* fiery terracotta */
 
 
     /* --- Secondary / Accent Colors --- */
-    --accent1: #513C2C; /* deep walnut */
-    --accent2: #CCE6F4; /* pale sky */
+    --accent1: #749A46; /* sage green */
+    --accent2: #C7EBA8; /* tea green */
+    --accend3: #F3B391; /* peach glow */
 
     /* --- Layout Constants --- */
     --border-radius: 8px;
@@ -33,3 +33,54 @@
         font-weight: var(--fw-bold);
     }
 }
+
+body {
+}
+
+.hidden {
+    display: none;
+}
+
+.header-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    /*background-color: var(--accent1);*/
+    width: 100%;
+    font: var(--font-main);
+}
+
+.logo {
+    margin: 1rem 3rem;
+    background-color: var(--accent2);
+    padding: 0.5rem;
+    border-radius: 10px;
+}
+
+.opt {
+    margin: 0 40px;
+    color: var(--accent2);
+}
+
+.nav-opts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    text-align: center;
+}
+
+
+#loginBtn {
+    background-color: var(--accent2);
+    /*margin: 1rem 3rem;*/
+    padding: 0.5rem;
+    border-radius: 10px;
+    font: var(--font-main) ;
+    /*font-weight: var(--fw-bold);*/
+    /*font-size: var(--font-variation-wdth);*/
+    border: none;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin: 0.67em 1em;
+}   
