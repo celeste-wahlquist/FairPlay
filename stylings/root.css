@@ -1,0 +1,38 @@
+:root {
+    /* --- Primary Brand Colors --- */
+    --primary: #446E1B; /* fern */
+    --secondary: #E94F37; /* fiery terracotta */
+
+
+    /* --- Secondary / Accent Colors --- */
+    --accent1: #749A46; /* sage green */
+    --accent2: #C7EBA8; /* tea green */
+    --accend3: #F3B391; /* peach glow */
+
+    /* --- Layout Constants --- */
+    --border-radius: 8px;
+    --container-width: 1200px;
+
+    /* Fonts */
+    --font-main: "Noto Sans", sans-serif;
+    /*font weight*/
+    --fw-normal: 400;
+    --fw-bold: 700;
+    --font-optical-sizing: auto;
+    --font-variation-wdth: 100;
+    body {
+        font-family: var(--font-main);
+        font-optical-sizing: var(--font-optical-sizing);
+        font-variation-settings: "wdth" var(--font-variation-wdth);
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    /* Use weight variables for consistency */
+    h1, h2, h3 {
+        font-weight: var(--fw-bold);
+    }
+}
+.hidden {
+    display: none;
+}
