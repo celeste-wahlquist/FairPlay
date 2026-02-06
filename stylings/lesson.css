@@ -1,0 +1,31 @@
+body{
+    background-color: var(--accent2);
+    width: 100%;
+}
+
+/* 
+--------------------------------------------------------------------------------------------------
+Js/html display css settings   
+--------------------------------------------------------------------------------------------------
+*/
+#js-display, #html-display{
+background-color: var(--primary);
+color: var(--accent3);
+width: 45%;
+padding: 1rem;
+}
+
+
+
+/* 
+--------------------------------------------------------------------------------------------------
+result display css settings    
+--------------------------------------------------------------------------------------------------
+*/
+#result-display{
+background-color: var(--accent3);
+color: var(--primary);
+width: 45%;
+padding: 1rem;
+
+}
