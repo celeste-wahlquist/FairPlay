@@ -1,20 +1,37 @@
 body{
     background-color: var(--accent2);
     width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-left: 0%;
+}
+
+h3{
+    height: 0;
+    margin: 0;
 }
 
 /* 
 --------------------------------------------------------------------------------------------------
-Js/html display css settings   
+Js-html display css settings   
 --------------------------------------------------------------------------------------------------
 */
-#js-display, #html-display{
+#js-html-display{
 background-color: var(--primary);
 color: var(--accent3);
-width: 45%;
-padding: 1rem;
+width: 49%;
 }
 
+.display-header{
+    display: flex;
+    flex-direction: row;
+    border: 2px, solid, black;
+    height: 2rem;
+    align-content: center;
+    justify-content: space-between;
+    padding: .5rem;
+}
 
 
 /* 
@@ -25,7 +42,9 @@ result display css settings
 #result-display{
 background-color: var(--accent3);
 color: var(--primary);
-width: 45%;
-padding: 1rem;
+width: 49%;
+}
 
+.display-header:nth-of-type(1) {
+/* justify-content: center; */
 }
