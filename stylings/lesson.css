@@ -1,91 +1,50 @@
-header {
-    width: 98%;
-    background-image: none;
-}
+body {
 
-body{
-    background-color: black;
-    width: 100%;
+    height: 70vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    margin-left: 0%;
+    background: black;
 }
 
-h3{
-    height: 0;
-    margin: 0;
+header {
+    width: 89%;
+    align-self: center;
 }
+main {
+    background-image: url('../images/succulent.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    margin-top: -10rem;
+    padding-top: 11rem;
 
-#js-html-display{
-background-color: var(--accent1);
-color: var(--accent3);
-width: 49%;
+    width: 90%;
+    align-self: center;
 }
-
-#js-html-display .display-body{
-    background-color: var(--primary);
-}
-
-.display-header{
+.code-windows {
     display: flex;
     flex-direction: row;
-    border: 2px, solid, black;
-    height: 2rem;
-    align-content: center;
-    justify-content: space-between;
-    padding: .5rem;
+    /*margin: 1rem 1rem 0 1rem;*/
+
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); 
+    
+    border-radius: 8px;
 }
 
-.display-body{
-    height: 50rem;
+#js-html-display {
+    width: 50%;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.4);
+    
+    border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
-#result-display{
-background-color: var(--accent3);
-color: var(--primary);
-width: 49%;
-}
-
-
-/* Container for the code */
-.code-window {
-  background-color: #1e2418; /* A very dark version of your Sage Green */
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  margin: 20px 0;
-  font-family: 'Courier New', Courier, monospace;
-}
-
-/* The top bar of the editor */
-.code-header {
-  background-color: var(--accent1); /* Your Sage Green */
-  padding: 10px;
-  display: flex;
-  align-items: center;
-}
-
-.dot {
-  height: 12px;
-  width: 12px;
-  border-radius: 50%;
-  display: inline-block;
-  margin-right: 6px;
-}
-
-.file-name {
-  color: var(--accent2); /* Your Tea Green */
-  font-size: 0.8rem;
-  margin-left: 10px;
-  font-weight: bold;
-}
-
-/* The code text itself */
-pre {
-  padding: 20px;
-  margin: 0;
-  overflow-x: auto;
-  color: #C7EBA8; /* Tea Green for the text */
-  line-height: 1.5;
+#result-display {
+    width: 50%;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.4);
 }

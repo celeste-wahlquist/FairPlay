@@ -1,14 +1,27 @@
 body {
-    width: 85%;
-    background-color: black;
-    margin: 0 auto;
+
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    background: black;
 }
 
-/*nothing spill out of its box*/
-*, *::before, *::after {
-    box-sizing: border-box;
+header {
+    width: 89%;
+    height: 100%;
+    align-self: center;
 }
+main {
+    background-image: url('../images/succulent.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
+    margin-top: -10rem;
+    width: 90%;
+    justify-self: center;
+    align-self: center;
+}
 .hero {
     flex-grow: 1;
     display: flex;
@@ -26,8 +39,9 @@ body {
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);  /* Safari support */
     
-    margin: 3rem;
+    margin: 15rem 0;
     padding: 2rem;
     border-radius: 20px;
     
 }
+

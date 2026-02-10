@@ -10,61 +10,67 @@
     <link rel="stylesheet" href="stylings/lesson.css">
 </head>
 <body>
-    <header>
-        <div class="header-bar">
-            <div class="left">
-                <a href="FairPlay.html" class="logo">Grasshopper JS</a>
-            </div>
 
-            <nav class="center">
-                <a class="opt" href="lesson.html">lessons</a>
-                <a class="opt">progress</a>
-                <a class="opt">practice</a>
-            </nav>
-
-            <div class="right">
-                <button id="loginBtn">Login</button>
-            </div>
+<header>
+    <div class="header-bar">
+        <div class="left">
+            <a href="FairPlay.html" class="logo">Grasshopper JS</a>
         </div>
-    </header>
-    <section id="js-html-display">
-        <section class="display-header">
-        <button>html/js</button>
-        <h3>js-display</h3>
-        <button>run</button>
-        </section>
-        <section class="display-body">
-            <section class="code-window">
-            <div class="code-header">
-                <span class="file-name">park-logic.js</span>
+
+        <nav class="center">
+            <a class="opt" href="lesson.html">lessons</a>
+            <a class="opt" href="#">progress</a>
+            <a class="opt" href="#">practice</a>
+        </nav>
+
+        <div class="right">
+            <button id="loginBtn" type="button">Login</button>
+        </div>
+    </div>
+</header>
+<main class="code-window-container">
+    <div class="code-windows">
+        <section id="js-html-display" class="panel">
+            <header class="panel-header">
+                <button type="button">html/js</button>
+                <h3>js-display</h3>
+                <button type="button" class="run-btn">run</button>
+            </header>
+
+            <div class="panel-body">
+                <article class="file-window">
+                    <div class="file-header">
+                        <span class="file-name">park-logic.js</span>
+                    </div>
+                    <pre><code>async function init() {
+            let parkData = await getParkData();
+            const parkInfoLinks = [{
+                name: "Current Conditions",
+                link: "conditions.html",
+                image: parkData.images[2].url
+            }];
+
+            addBlerb(parkData);
+            setHeaderInfo(parkData);
+            linkData(parkInfoLinks, parkData);
+            return parkData;
+        }</code></pre>
+                </article>
             </div>
-            <pre><code>
-                async function init() {
-                let parkData = await getParkData();
-                const parkInfoLinks = [
-                    {
-                    name: "Current Conditions",
-                    link: "conditions.html",
-                    image: parkData.images[2].url
-                    }
-                ];
-
-                addBlerb(parkData);
-                setHeaderInfo(parkData);
-                linkData(parkInfoLinks, parkData);
-                return parkData;
-                }
-            </code></pre>
-            </section>
         </section>
-    </section>
-    <section id="result-display">
-        <section class="display-header">
-        <h3>result-display</h3>
+        <section id="result-display" class="panel">
+            <header class="panel-header">
+                <h3>result-display</h3>
+            </header>
+            <div class="panel-body output-screen">
+            </div>
         </section>
-        <section class="display-body">
-
-        </section>
-    </section>
+    </div>
+</main>
 </body>
 </html>
+
+
+
+
+

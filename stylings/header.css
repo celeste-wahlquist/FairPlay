@@ -1,15 +1,6 @@
-/*set up background*/
 header {
-    background-image: url('../images/succulent.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    height: 70vh;
-    min-height: 250px;
     display: flex;
     flex-direction: column;
-
 }
 
 /* its in the name, header. bar. that's it.  */
@@ -17,8 +8,8 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    padding: 10px 20px;
+    justify-self: center;
+    padding: 20px 20px;
 
 
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
@@ -34,6 +25,8 @@ header {
     /*stick it to the top in front of everything else*/
     position: relative;
     z-index: 2;
+    
+    border-radius: 8px;
 }
 
 .left {
