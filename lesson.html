@@ -15,10 +15,37 @@
         <h3>js-display</h3>
         <button>run</button>
         </section>
+        <section class="display-body">
+            <section class="code-window">
+            <div class="code-header">
+                <span class="file-name">park-logic.js</span>
+            </div>
+            <pre><code>
+                async function init() {
+                let parkData = await getParkData();
+                const parkInfoLinks = [
+                    {
+                    name: "Current Conditions",
+                    link: "conditions.html",
+                    image: parkData.images[2].url
+                    }
+                ];
+
+                addBlerb(parkData);
+                setHeaderInfo(parkData);
+                linkData(parkInfoLinks, parkData);
+                return parkData;
+                }
+            </code></pre>
+            </section>
+        </section>
     </section>
     <section id="result-display">
         <section class="display-header">
         <h3>result-display</h3>
+        </section>
+        <section class="display-body">
+
         </section>
     </section>
 </body>
