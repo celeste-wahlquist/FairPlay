@@ -1,13 +1,18 @@
 :root {
-    /* --- Primary Brand Colors --- */
-    --primary: #446E1B; /* fern */
-    --secondary: #E94F37; /* fiery terracotta */
-
-
-    /* --- Secondary / Accent Colors --- */
-    --accent1: #749A46; /* sage green */
-    --accent2: #C7EBA8; /* tea green */
-    --accent3: #F3B391; /* peach glow */
+    /*!* --- Primary Brand Colors --- *!*/
+    /*--primary: #446E1B; !* fern *!*/
+    /*--secondary: #E94F37; !* fiery terracotta *!*/
+    
+    --primary: #759100; /* forest moss */
+    --secondary: #AD4003; /* rusty spice */
+    --accent1: #D0CC68; /* golden sand */
+    --accent2: #395D00; /* olive green */
+    --accent3: #C26510; /* burnt caramel */
+    
+    /*!* --- Secondary / Accent Colors --- *!*/
+    /*--accent1: #749A46; !* sage green *!*/
+    /*--accent2: #C7EBA8; !* tea green *!*/
+    /*--accent3: #F3B391; !* peach glow *!*/
 
     /* --- Layout Constants --- */
     --border-radius: 8px;

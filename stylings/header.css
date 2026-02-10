@@ -1,0 +1,106 @@
+/*set up background*/
+header {
+    background-image: url('../images/succulent.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    height: 70vh;
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+/* its in the name, header. bar. that's it.  */
+.header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+
+
+    /*blurry background*/
+    /* add a little bit of ~spice~ */
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);  /* Safari support */
+    
+    /*stick it to the top in front of everything else*/
+    position: relative;
+    z-index: 2;
+}
+
+.left {
+    justify-self: start;
+    padding-left: 0.5rem;
+    transition: transform 0.3s ease-in-out;
+}
+
+.left a {
+    font: var(--font-main);
+    font-weight: var(--fw-bold);
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: black;
+
+    padding: 0.5rem;
+    background: var(--accent1);
+    border-radius: 8px;
+}
+
+.left:hover {
+    transform: translateY(-1.5px);
+}
+
+.center {
+    justify-self: center;
+    display: flex;
+    gap: 40px;
+
+    background-color: var(--accent1);
+    padding: 0.5rem;
+    border-radius: 0.5rem 2rem;
+}
+
+.right {
+    justify-self: end;
+}
+.right button {
+    font: var(--font-main);
+    font-weight: var(--fw-bold);
+    font-size: 1.2rem;
+
+    padding: 0.5rem;
+    background: var(--accent1);
+    border: none;
+    border-radius: 8px;
+    color: black;
+    text-decoration: none;
+
+    transition: transform 0.3s ease-in-out;
+}
+
+.right button:hover {
+    transform: translateY(-1.5px);
+}
+
+.opt {
+    margin: 0;
+    padding: 0 0.5rem;
+    cursor: pointer;
+
+    color: black;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-decoration: none;
+}
+
+.opt:hover {
+    color: var(--primary);
+}
