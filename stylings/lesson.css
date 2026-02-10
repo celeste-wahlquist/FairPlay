@@ -21,11 +21,12 @@ main {
 
     width: 90%;
     align-self: center;
+    
+    border-radius: 15px;
 }
 .code-windows {
     display: flex;
     flex-direction: row;
-    /*margin: 1rem 1rem 0 1rem;*/
 
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(12px);
@@ -38,13 +39,23 @@ main {
 #js-html-display {
     width: 50%;
     padding: 1rem;
-    background: rgba(255, 255, 255, 0.4);
+    margin: 1rem;
+    background: rgba(208, 204, 104, 0.7);
     
     border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
 }
 
 #result-display {
     width: 50%;
     padding: 1rem;
-    background: rgba(255, 255, 255, 0.4);
+    margin: 1rem;
+    background: rgba(208, 204, 104, 0.7);
+
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
 }
+
+/*.window1 {*/
+/*    background: black;*/
+/*}*/

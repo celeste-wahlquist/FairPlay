@@ -21,6 +21,8 @@ main {
     width: 90%;
     justify-self: center;
     align-self: center;
+    
+    border-radius: 15px;
 }
 .hero {
     flex-grow: 1;
@@ -45,3 +47,19 @@ main {
     
 }
 
+@media screen and (max-width: 800px) {
+    .nav-opts {
+        display: none;
+    }
+    .login-nav {
+        display: none;
+    }
+    
+    main {
+        width: 100%;
+    }
+    
+    .hero {
+        margin: 1rem;
+    }
+}

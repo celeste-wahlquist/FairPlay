@@ -29,13 +29,13 @@ header {
     border-radius: 8px;
 }
 
-.left {
+.logo-nav {
     justify-self: start;
     padding-left: 0.5rem;
     transition: transform 0.3s ease-in-out;
 }
 
-.left a {
+.logo-nav a {
     font: var(--font-main);
     font-weight: var(--fw-bold);
     font-size: 1.5rem;
@@ -47,11 +47,11 @@ header {
     border-radius: 8px;
 }
 
-.left:hover {
+.logo-nav:hover {
     transform: translateY(-1.5px);
 }
 
-.center {
+.nav-opts {
     justify-self: center;
     display: flex;
     gap: 40px;
@@ -61,10 +61,10 @@ header {
     border-radius: 0.5rem 2rem;
 }
 
-.right {
+.login-nav {
     justify-self: end;
 }
-.right button {
+.login-nav button {
     font: var(--font-main);
     font-weight: var(--fw-bold);
     font-size: 1.2rem;
@@ -79,7 +79,7 @@ header {
     transition: transform 0.3s ease-in-out;
 }
 
-.right button:hover {
+.login-nav button:hover {
     transform: translateY(-1.5px);
 }
 
