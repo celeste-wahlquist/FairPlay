@@ -42,8 +42,11 @@ header {
     text-decoration: none;
     color: black;
 
-    padding: 0.5rem;
-    background: var(--accent1);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);  /* Safari support */
+
+    padding: 0.5rem 1.5rem;
     border-radius: 8px;
 }
 
@@ -56,8 +59,10 @@ header {
     display: flex;
     gap: 40px;
 
-    background-color: var(--accent1);
-    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);  /* Safari support */
+    padding: 0.5rem 0.9rem;
     border-radius: 0.5rem 2rem;
 }
 
@@ -69,8 +74,10 @@ header {
     font-weight: var(--fw-bold);
     font-size: 1.2rem;
 
-    padding: 0.5rem;
-    background: var(--accent1);
+    padding: 0.5rem 1.5rem;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);  /* Safari support */
     border: none;
     border-radius: 8px;
     color: black;
