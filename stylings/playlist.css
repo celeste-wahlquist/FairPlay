@@ -1,0 +1,29 @@
+body {
+
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    background: black;
+
+}
+
+header {
+    width: 89%;
+    align-self: center;
+}
+
+main {
+    background-image: url('../images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    margin-top: -10rem;
+    width: 90%;
+    justify-self: center;
+    align-self: center;
+
+    border-radius: 15px;
+
+    z-index: -1;
+}

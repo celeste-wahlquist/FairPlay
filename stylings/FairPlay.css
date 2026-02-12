@@ -4,15 +4,18 @@ body {
     display: flex;
     flex-direction: column;
     background: black;
+    
 }
 
 header {
     width: 89%;
     height: 100%;
     align-self: center;
+    
+    z-index: 10;
 }
 main {
-    background-image: url('../images/succulent.png');
+    background-image: url('../images/background.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -21,8 +24,10 @@ main {
     width: 90%;
     justify-self: center;
     align-self: center;
-    
+
     border-radius: 15px;
+
+    z-index: -1;
 }
 .hero {
     flex-grow: 1;
@@ -30,6 +35,14 @@ main {
     align-items: center;
     justify-content: center;
     color: black;
+    
+    width: 100%;
+    height: 100%;
+
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);  /* Safari support */
+    
 }
 
 .hero-header {
@@ -37,14 +50,41 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);  /* Safari support */
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);  /* Safari support */
     
     margin: 15rem 0;
     padding: 2rem;
     border-radius: 20px;
     
+    width: 55vh;
+    
+    text-align: center;
+}
+
+.icon {
+    height: 4rem;
+    width: auto;
+}
+
+footer {
+    display: flex;
+    align-self: center;
+    
+    width: 90%;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+footer a {
+    text-decoration: none;
+    color: grey;
+    padding: 0 1rem;
 }
 
 @media screen and (max-width: 800px) {
