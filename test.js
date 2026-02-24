@@ -126,7 +126,7 @@ async function getplaylist(token) {
   console.log(data.access_token);
 }
 
-async function getSpotifyData(token) {
+async function getSpotifyAlbum(token) {
   try {
     const response = await fetch('https://api.spotify.com/v1/albums/4aawyAB9vmqN3uQ7FjRGTy', {
       method: 'GET',
@@ -146,11 +146,80 @@ async function getSpotifyData(token) {
   }
 }
 
+async function getUserID(token, playlistID) {
+  try {
+    const response = await fetch(`https://api.spotify.com/v1/playlists/${playlistID}`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error('Request failed:', error);
+  }
+}
+
+// async function getUserID(token) {
+//   try {
+//     const response = await fetch(`https://api.spotify.com/v1/playlists/${playlistID}`, {
+//       method: 'GET',
+//       headers: {
+//         'Authorization': `Bearer ${token}`
+//       }
+//     });
+
+//     if (!response.ok) {
+//       throw new Error(`HTTP error! status: ${response.status}`);
+//     }
+
+//     const data = await response.json();
+//     console.log(data);
+//   } catch (error) {
+//     console.error('Request failed:', error);
+//     return null;
+//   }
+// }
+
+async function getSpotifyDataV2(token) {
+  try {
+    const response = await fetch('https://api.spotify.com/v1/me/playlists', {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`Error ${response.status}: ${errorText}`);
+    }
+
+    const data = await response.json();
+    console.log('Success:', data);
+    return data;
+  } catch (error) {
+    console.error('Fetch failed:', error);
+  }
+}
+
 
 
 
 let token = await getToken()
-getSpotifyData(token);
+let tempPlaylistID = '55gj1P2XPDay5TSEtSgQDu'
+
+getUserID(token, tempPlaylistID)
+
+getSpotifyDataV2(token);
+getSpotifyAlbum(token);
+
 
 // getplaylist(token)
 

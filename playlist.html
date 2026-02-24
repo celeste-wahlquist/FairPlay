@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script type="module" src="scripts/FairPlay.js"></script>
+    <script type="module" src="scripts/FairPlay.js" defer></script>
+    <script type="module" src="scripts/Playlist.js" defer></script>
+    <!-- <script type="module" src="test.js"></script> -->
     <link rel="stylesheet" href="stylings/root.css">
     <link rel="stylesheet" href="stylings/header.css">
     <link rel="stylesheet" href="stylings/playlist.css">
@@ -35,6 +37,17 @@
     </div>
 </header>
 <main>
-    <p>LOTS OF STUFF SO MAIN EXISTS</p>
+    <div class="container">
+        
+        <div id="login-section">
+            <p>Connect your account to see your music.</p>
+            <button id="login-button">Login with Spotify</button>
+        </div>
+
+        <div id="app-section">
+            <h2 id="user-greeting">Your Playlists</h2>
+            <div id="playlists-container">Loading playlists...</div>
+        </div>
+    </div>
 </main>
 </body>

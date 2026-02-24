@@ -27,3 +27,93 @@ main {
 
     z-index: -1;
 }
+
+.container {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 10rem;
+}
+
+
+#login-section, #app-section {
+    display: none; /* Controlled by js */
+    text-align: center;
+}
+
+/* Playlist Cards */
+#playlists-container {
+    margin-top: 2rem;
+    text-align: left;
+}
+
+.playlist-card {
+    background: var(--secondary);
+    padding: 0.75rem;
+    margin: 12px 0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+}
+
+.playlist-card:hover {
+    background: var(--primary);
+    border-color: var(--accent1);
+}
+
+.playlist-card img {
+    width: 64px;
+    height: 64px;
+    margin-right: 1rem;
+    border-radius: 4px;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+.playlist-info strong {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 4px;
+}
+
+.playlist-info small {
+    color: #b3b3b3;
+}
+
+/* Buttons */
+button {
+    background-color: var(--accent1);
+    color: white;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+button:hover {
+    background-color: var(--accent2);
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+.error {
+    color: #ff4444;
+    background: rgba(255, 68, 68, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ff4444;
+}
