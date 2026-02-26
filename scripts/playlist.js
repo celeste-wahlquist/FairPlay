@@ -1,7 +1,7 @@
 //  --- to enter dev mode go to http://127.0.0.1:5500/playlist.html?code=5 ---
 
 const clientId = "3edfcb2cdb144a9796a8c39f5ce3730a"; 
-const redirectUri = 'https://deploy-preview-8--fairplayer.netlify.app/playlist'; 
+const redirectUri = 'https://fairplayer.netlify.app/playlist'; 
 const scope = 'playlist-read-private streaming user-read-playback-state user-modify-playback-state';
 
 
