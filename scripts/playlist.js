@@ -6,6 +6,7 @@ const scope = 'playlist-read-private streaming user-read-playback-state user-mod
 
 
 // --- PKCE CRYPTO HELPERS ---
+//decrypting spotify 
 
 const generateRandomString = (length) => {
     const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -101,7 +102,7 @@ const init = async () => {
 
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
-    // const code = "5";
+    // const code = "5"; 
 
     if (!code) {
         console.log('code? there shouldnt be one')
