@@ -47,6 +47,20 @@ main {
     border-radius: 15px;
 }
 
+
+.login-container {
+    width: 100%;
+    max-width: 500px;
+    height: 450px; 
+    
+    background-color: var(--accent1);
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 10px;
+    margin-top: 13rem;
+
+}
+
 .music-container {
     width: 100%;
     max-width: 500px;
