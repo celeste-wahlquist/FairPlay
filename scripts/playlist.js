@@ -71,12 +71,12 @@ async function getAccessToken(code) {
 // --- UI & API CALLS ---
 
 async function fetchPlaylists(token) {
-    console.log("Fetching with token:", token); // Log 1
+    // console.log("Fetching with token:", token); // Log 1
     const response = await fetch('https://api.spotify.com/v1/me/playlists', {
         headers: { 'Authorization': `Bearer ${token}` }
     });
     const data = await response.json();
-    console.log("Spotify Response:", data); // Log 2
+    // console.log("Spotify Response:", data); // Log 2
     renderPlaylists(data.items);
 }
 
@@ -101,7 +101,7 @@ function renderPlaylists(playlists) {
 
 const init = async () => {
 
-    console.log("Init is running!"); // Check if script is linkedy
+    // console.log("Init is running!"); // Check if script is linkedy
 
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
@@ -110,33 +110,31 @@ const init = async () => {
     // const code = "5"; 
 
     if (!code) {
-        loginContainer.classList.toggle("hidden")
-        console.log('code? there shouldnt be one')
-        document.getElementById('music-container').style.display = 'block';
-        console.log('code? there shouldnt be one')
+        // loginContainer.classList.toggle("hidden")
+        // console.log('code? there shouldnt be one')
+        document.getElementById('music-container hidden').style.display = 'none';
+        // console.log('code? there shouldnt be one')
         document.getElementById('login-button').addEventListener('click', redirectToSpotify);
         document.getElementById('loginBtn').addEventListener('click', redirectToSpotify);
     } else if(code === "5"){
         loginContainer.classList.toggle("hidden")
         console.log("Dev Mode triggered. Loading local JSON...");
-        try {
-            const response = await fetch('.//scripts/testplaylists.json');
-            console.log("dev mode")
-            const data = await response.json();
-            
-            document.getElementById('music-list').style.display = 'block';
-            renderPlaylists(data.items);
-        } catch (err) {
-            console.error("Failed to load local testplaylists.json:", err);
-        }
+
+        const response = await fetch('.//scripts/testplaylists.json');
+        console.log("dev mode")
+        const data = await response.json();
+        
+        document.getElementById('music-list').style.display ='block';
+        renderPlaylists(data.items);
+
     } else {
-        document.getElementById('app-section').style.display = 'block';
+        loginContainer.classList.toggle("hidden")
         // Remove code from URL for cleanliness
         window.history.replaceState({}, document.title, window.location.pathname);
         
+        document.getElementById('music-list').style.display ='block';
         const authData = await getAccessToken(code);
         if (authData.access_token) {
-            // Save token for future use (like the player)
             window.localStorage.setItem('access_token', authData.access_token);
             fetchPlaylists(authData.access_token);
         }
