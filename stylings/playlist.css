@@ -13,6 +13,11 @@ header {
 }
 
 main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
     background-image: url('../images/background.jpg');
     background-size: cover;
     background-position: center;
@@ -20,31 +25,92 @@ main {
 
     margin-top: -10rem;
     width: 90%;
+    height: 130vh;
     justify-self: center;
     align-self: center;
 
     border-radius: 15px;
-
     z-index: -1;
 }
 
-.container {
-    position: relative;
+/* .login-container {
+    /* position: relative; */
+    /* display: flex;
     z-index: 10;
+
     width: 100%;
     max-width: 600px;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: 10px;
+    
     margin: auto;
     margin-top: 10rem;
+
+} */ 
+
+.main-container {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 97.5%;
+    height: 100%;
+
+    font-size: 2rem;
+    /* font-family: ; */
 }
 
+.login-container {
+    background: rgba(255, 255, 255, 0.8);
+    margin: 1rem;
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+/* .music-container { */
+/* 1. Define the size of the 'frame' */
+/* margin-top: 10rem;
+height: 25rem; 
+width: 60%; */
+
+/* 2. Contain the content */
+/* overflow-y: auto;  */
+
+/* 3. Optional styling to make it look like a frame */
+/* border: 2px solid #333;
+padding: 10px;
+background-color: #f9f9f9;
+} */
+
+.music-container {
+    height: 400px; /* Use height instead of max-height to test */
+    width: 60%;
+    overflow-y: auto; /* Force the scrollbar to show for testing */
+    display: block !important; /* Ensure it's not hidden by other styles */
+    
+    /* Keep your other styles */
+    background-color: #121212;
+    padding: 15px;
+    border: 2px solid #333;
+    
+}
+#music-list {
+    display: flex;
+    flex-direction: column;
+    min-height: min-content; 
+}
 
 #login-section, #app-section {
     display: none; /* Controlled by js */
     text-align: center;
 }
+
+
+
+
 
 /* Playlist Cards */
 #playlists-container {
@@ -86,6 +152,23 @@ main {
 
 .playlist-info small {
     color: #b3b3b3;
+}
+
+.music-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.music-container::-webkit-scrollbar-track {
+    background: #121212;
+}
+
+.music-container::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 10px;
+}
+
+.music-container::-webkit-scrollbar-thumb:hover {
+    background: #888;
 }
 
 /* Buttons */

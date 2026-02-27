@@ -3,6 +3,8 @@
 const clientId = "3edfcb2cdb144a9796a8c39f5ce3730a"; 
 const redirectUri = 'https://fairplayer.netlify.app/playlist'; 
 const scope = 'playlist-read-private streaming user-read-playback-state user-modify-playback-state';
+// const redirectButton = document.getElementById("login-button")
+// const loggedIn = false;
 
 
 // --- PKCE CRYPTO HELPERS ---
@@ -79,19 +81,20 @@ async function fetchPlaylists(token) {
 }
 
 function renderPlaylists(playlists) {
-    const container = document.getElementById('playlists-container');
+    const container = document.getElementById('music-list');
     if (!playlists) {
         container.innerHTML = "No playlists found.";
         return;
     }
 
     container.innerHTML = playlists.map(pl => `
-        <div class="playlist-card" onclick="alert('Playlist ID: ${pl.id}')">
-            <img src="${pl.images[0]?.url || 'https://via.placeholder.com/60'}" alt="cover">
-            <div>
-                <strong>${pl.name}</strong><br>
+        <li>
+            <div class="playlist-card" onclick="alert('Playlist ID: ${pl.id}')">
+                <img src="${pl.images[0]?.url || 'https://via.placeholder.com/60'}" alt="cover">
+                <div>
+                    <strong>${pl.name}</strong><br>
+                </div>
             </div>
-        </div>
     `).join('');
 }
 
@@ -102,22 +105,26 @@ const init = async () => {
 
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
+    const loginContainer = document.querySelector(".login-container")
+
     // const code = "5"; 
 
     if (!code) {
+        loginContainer.classList.toggle("hidden")
         console.log('code? there shouldnt be one')
-        document.getElementById('login-section').style.display = 'block';
+        document.getElementById('music-container').style.display = 'block';
         console.log('code? there shouldnt be one')
         document.getElementById('login-button').addEventListener('click', redirectToSpotify);
         document.getElementById('loginBtn').addEventListener('click', redirectToSpotify);
     } else if(code === "5"){
+        loginContainer.classList.toggle("hidden")
         console.log("Dev Mode triggered. Loading local JSON...");
         try {
             const response = await fetch('.//scripts/testplaylists.json');
             console.log("dev mode")
             const data = await response.json();
             
-            document.getElementById('app-section').style.display = 'block';
+            document.getElementById('music-list').style.display = 'block';
             renderPlaylists(data.items);
         } catch (err) {
             console.error("Failed to load local testplaylists.json:", err);
@@ -135,6 +142,8 @@ const init = async () => {
         }
     }
 };  
+
+// redirectButton.addEventListener("click", redirectToSpotify);
 
 init();
 // console.log('hi')
