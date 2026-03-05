@@ -1,138 +1,92 @@
-body {
 
-    height: 70vh;
-    display: flex;
-    flex-direction: column;
-    background: black;
 
-}
 
-header {
-    width: 89%;
-    align-self: center;
-}
 
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
+/* main {
     background-image: url('../images/background.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
     margin-top: -10rem;
     width: 90%;
-    height: 130vh;
+    height: 88vh;
     justify-self: center;
     align-self: center;
 
     border-radius: 15px;
-    z-index: -1;
-}
-
-/* .login-container {
-    /* position: relative; */
-    /* display: flex;
-    z-index: 10;
-
-    width: 100%;
-    max-width: 600px;
-    
-    margin: auto;
-    margin-top: 10rem;
-
-} */ 
-
-.main-container {
-    background: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(10px);
-    padding: 20px;
-    border-radius: 10px;
 
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    justify-self: center;
+    align-self: center;
+} */
+/* Update the main wrapper to allow children to take up space */
+.main-container {
+    display: flex;
+    flex-direction: column; /* Stack login and list vertically */
+    align-items: center;
+    justify-content: flex-start; /* Start from top so it doesn't float in middle */
+    min-height: 80vh; 
+    padding:20px 20px 0 20px;
 
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
     width: 97.5%;
-    height: 100%;
-
-    font-size: 2rem;
-    /* font-family: ; */
+    border-radius: 15px;
 }
+
 
 .login-container {
-    background: rgba(255, 255, 255, 0.8);
-    margin: 1rem;
-    padding: 2rem;
+    width: 100%;
+    max-width: 500px;
+    height: 450px; 
+    
+    background-color: var(--accent1);
+    border: 1px solid #333;
     border-radius: 8px;
+    padding: 10px;
+    margin-top: 13rem;
+
 }
-
-/* .music-container { */
-/* 1. Define the size of the 'frame' */
-/* margin-top: 10rem;
-height: 25rem; 
-width: 60%; */
-
-/* 2. Contain the content */
-/* overflow-y: auto;  */
-
-/* 3. Optional styling to make it look like a frame */
-/* border: 2px solid #333;
-padding: 10px;
-background-color: #f9f9f9;
-} */
 
 .music-container {
-    height: 400px; /* Use height instead of max-height to test */
-    width: 60%;
-    overflow-y: auto; /* Force the scrollbar to show for testing */
-    display: block !important; /* Ensure it's not hidden by other styles */
+    width: 100%;
+    max-width: 500px;
+    height: 450px; /* Force a fixed height to test scroll */
+    overflow-y: auto; /* Allow vertical scrolling */
+    overflow-x: hidden;
     
-    /* Keep your other styles */
-    background-color: #121212;
-    padding: 15px;
-    border: 2px solid #333;
-    
+    background-color: var(--accent1);
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 10px;
+    margin-top: 13rem;
+
 }
+
+/* Ensure the list fills the width so the scrollbar stays on the edge */
 #music-list {
-    display: flex;
-    flex-direction: column;
-    min-height: min-content; 
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
-
-#login-section, #app-section {
-    display: none; /* Controlled by js */
-    text-align: center;
-}
-
-
-
-
-
-/* Playlist Cards */
-#playlists-container {
-    margin-top: 2rem;
-    text-align: left;
-}
-
 .playlist-card {
-    background: var(--secondary);
+    background: var(--light1);
+    color: var(--primary);
+    font-size: 1.2em;
+
     padding: 0.75rem;
     margin: 12px 0;
     border-radius: 8px;
+
     display: flex;
     align-items: center;
-    cursor: pointer;
-    transition: all 0.2s;
-    border: 1px solid transparent;
 }
 
 .playlist-card:hover {
-    background: var(--primary);
-    border-color: var(--accent1);
+    cursor: pointer;
 }
 
 .playlist-card img {
@@ -154,49 +108,3 @@ background-color: #f9f9f9;
     color: #b3b3b3;
 }
 
-.music-container::-webkit-scrollbar {
-    width: 8px;
-}
-
-.music-container::-webkit-scrollbar-track {
-    background: #121212;
-}
-
-.music-container::-webkit-scrollbar-thumb {
-    background: #555;
-    border-radius: 10px;
-}
-
-.music-container::-webkit-scrollbar-thumb:hover {
-    background: #888;
-}
-
-/* Buttons */
-button {
-    background-color: var(--accent1);
-    color: white;
-    border: none;
-    padding: 14px 32px;
-    border-radius: 50px;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-button:hover {
-    background-color: var(--accent2);
-    transform: scale(1.05);
-}
-
-button:active {
-    transform: scale(0.98);
-}
-
-.error {
-    color: #ff4444;
-    background: rgba(255, 68, 68, 0.1);
-    padding: 1rem;
-    border-radius: 8px;
-    border: 1px solid #ff4444;
-}

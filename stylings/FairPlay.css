@@ -1,34 +1,3 @@
-body {
-
-    height: 70vh;
-    display: flex;
-    flex-direction: column;
-    background: black;
-    
-}
-
-header {
-    width: 89%;
-    height: 100%;
-    align-self: center;
-    
-    z-index: 10;
-}
-main {
-    background-image: url('../images/background.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    margin-top: -10rem;
-    width: 90%;
-    justify-self: center;
-    align-self: center;
-
-    border-radius: 15px;
-
-    z-index: -1;
-}
 .hero {
     flex-grow: 1;
     display: flex;
@@ -41,8 +10,7 @@ main {
 
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);  /* Safari support */
-    
+    -webkit-backdrop-filter: blur(20px);  /* Safari support */  
 }
 
 .hero-header {
@@ -102,5 +70,20 @@ footer a {
     .hero {
         margin: 1rem;
     }
+}
+
+.slide-out-left {
+  animation: slideOut 0.6s ease forwards;
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
 }
 
