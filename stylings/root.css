@@ -1,19 +1,11 @@
 :root {
-    /*!* --- Primary Brand Colors --- *!*/
-    /*--primary: #446E1B; !* fern *!*/
-    /*--secondary: #E94F37; !* fiery terracotta *!*/
-    
     --primary: #4B4CCE; /* forest moss */
     --secondary: #77035B; /* rusty spice */
     --accent1: #9B94FD; /* golden sand */
     --accent2: #9C1C76; /* olive green */
     --accent3: #0E5154; /* burnt caramel */
     --light1: #cac7f4;
-    
-    /*!* --- Secondary / Accent Colors --- *!*/
-    /*--accent1: #749A46; !* sage green *!*/
-    /*--accent2: #C7EBA8; !* tea green *!*/
-    /*--accent3: #F3B391; !* peach glow *!*/
+
 
     /* --- Layout Constants --- */
     --border-radius: 8px;
@@ -41,4 +33,40 @@
 }
 .hidden {
     display: none;
+}
+
+body {
+
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    background: black; 
+}
+
+header {
+    width: 89%;
+    height: 100%;
+    align-self: center;
+    
+    z-index: 10;
+}
+main {
+    background-image: url('../images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-top: -10rem;
+    width: 90%;
+    height: 88vh;
+    justify-self: center;
+    align-self: center;
+
+    border-radius: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    justify-self: center;
+    align-self: center;
 }

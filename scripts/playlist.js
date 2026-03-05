@@ -6,6 +6,7 @@ const scope = 'playlist-read-private streaming user-read-playback-state user-mod
 // const redirectButton = document.getElementById("login-button")
 // const loggedIn = false;
 
+const initLogin = document.getElementById('welcomeLogin')
 
 // --- PKCE CRYPTO HELPERS ---
 //decrypting spotify 
@@ -30,6 +31,12 @@ const base64encode = (input) => {
 
 // --- AUTHENTICATION FLOW ---
 
+// --- UPDATED AUTHENTICATION FLOW ---
+
+function redirectToProfile() {
+    window.location.href = "playlist.html";
+}
+
 async function redirectToSpotify() {
     const codeVerifier = generateRandomString(64);
     const hashed = await sha256(codeVerifier);
@@ -46,6 +53,7 @@ async function redirectToSpotify() {
         code_challenge: codeChallenge,
     });
 
+    // Corrected the URL and the template literal syntax
     window.location.href = `https://accounts.spotify.com/authorize?${params.toString()}`;
 }
 
@@ -64,19 +72,27 @@ async function getAccessToken(code) {
         }),
     });
 
+    // Check if the response is okay before parsing JSON
+    if (!response.ok) {
+        const errorBody = await response.text(); // Get the text like "Check settings..."
+        console.error("Token Error:", errorBody);
+        throw new Error(`Spotify Auth Failed: ${response.status}`);
+    }
+
     return await response.json();
 }
 
-
-// --- UI & API CALLS ---
-
 async function fetchPlaylists(token) {
-    // console.log("Fetching with token:", token); // Log 1
     const response = await fetch('https://api.spotify.com/v1/me/playlists', {
         headers: { 'Authorization': `Bearer ${token}` }
     });
+
+    if (!response.ok) {
+        console.error("API Error:", await response.text());
+        return;
+    }
+
     const data = await response.json();
-    // console.log("Spotify Response:", data); // Log 2
     renderPlaylists(data.items);
 }
 
@@ -112,10 +128,13 @@ const init = async () => {
     if (!code) {
         // loginContainer.classList.toggle("hidden")
         // console.log('code? there shouldnt be one')
-        document.getElementById('music-container hidden').style.display = 'none';
+        document.getElementById('music-container');
         // console.log('code? there shouldnt be one')
-        document.getElementById('login-button').addEventListener('click', redirectToSpotify);
         document.getElementById('loginBtn').addEventListener('click', redirectToSpotify);
+        document.getElementById('welcomeLogin').addEventListener('click', () => {
+        redirectToSpotify(); 
+        redirectToProfile(); 
+        });
     } else if(code === "5"){
         loginContainer.classList.toggle("hidden")
         console.log("Dev Mode triggered. Loading local JSON...");
@@ -140,8 +159,6 @@ const init = async () => {
         }
     }
 };  
-
-// redirectButton.addEventListener("click", redirectToSpotify);
 
 init();
 // console.log('hi')
