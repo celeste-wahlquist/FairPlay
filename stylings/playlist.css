@@ -1,28 +1,4 @@
 
-
-
-
-/* main {
-    background-image: url('../images/background.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    margin-top: -10rem;
-    width: 90%;
-    height: 88vh;
-    justify-self: center;
-    align-self: center;
-
-    border-radius: 15px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    justify-self: center;
-    align-self: center;
-} */
-/* Update the main wrapper to allow children to take up space */
 .main-container {
     display: flex;
     flex-direction: column; /* Stack login and list vertically */
