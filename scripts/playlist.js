@@ -123,6 +123,10 @@ const init = async () => {
     const code = urlParams.get('code');
     const loginContainer = document.querySelector(".login-container")
 
+    
+    document.getElementById('loginBtn').addEventListener('click', redirectToSpotify);
+    document.getElementById('welcomeLogin').addEventListener('click', redirectToSpotify);
+
     // const code = "5"; 
 
     if (!code){
