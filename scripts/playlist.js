@@ -45,12 +45,12 @@ async function redirectToSpotify() {
     window.localStorage.setItem('code_verifier', codeVerifier);
 
     const params = new URLSearchParams({
-        client_id: clientId,
         response_type: 'code',
-        redirect_uri: redirectUri,
-        scope: scope,
+        client_id: clientId,
+        scope,
         code_challenge_method: 'S256',
         code_challenge: codeChallenge,
+        redirect_uri: redirectUri,
     });
 
     // Corrected the URL and the template literal syntax
@@ -123,6 +123,10 @@ const init = async () => {
     const code = urlParams.get('code');
     const loginContainer = document.querySelector(".login-container")
 
+    
+    document.getElementById('loginBtn').addEventListener('click', redirectToSpotify);
+    document.getElementById('welcomeLogin').addEventListener('click', redirectToSpotify);
+
     // const code = "5"; 
 
     if (!code){
@@ -137,6 +141,7 @@ const init = async () => {
         renderPlaylists(data.items);
 
     } else {
+        console.log(code)
         window.history.replaceState({}, document.title, window.location.pathname);
         const authData = await getAccessToken(code);
         if (authData.access_token) {
