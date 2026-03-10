@@ -125,11 +125,11 @@ const init = async () => {
 
     
     document.getElementById('loginBtn').addEventListener('click', redirectToSpotify);
-    document.getElementById('welcomeLogin').addEventListener('click', redirectToSpotify);
 
     // const code = "5"; 
 
     if (!code){
+        document.getElementById('welcomeLogin').addEventListener('click', redirectToSpotify);
         return
     }
     else if(code === "5"){
