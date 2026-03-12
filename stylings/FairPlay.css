@@ -55,22 +55,6 @@ footer a {
     padding: 0 1rem;
 }
 
-@media screen and (max-width: 800px) {
-    .nav-opts {
-        display: none;
-    }
-    .login-nav {
-        display: none;
-    }
-    
-    main {
-        width: 100%;
-    }
-    
-    .hero {
-        margin: 1rem;
-    }
-}
 
 .slide-out-left {
   animation: slideOut 0.6s ease forwards;
@@ -87,3 +71,71 @@ footer a {
   }
 }
 
+.welcomeLogin
+{
+    color: var(--primary);
+    font-size: 1em;
+    font-weight: bold;
+    border: none;
+    background-color: transparent;
+    transition: 0.5s;
+}
+
+.welcomeLogin:hover
+{
+    cursor: pointer;
+    transform: translateY(-4px);
+    text-shadow: 0px 4px 6px rgba(0,0,0,0.3);
+}
+
+@media screen and (max-width: 800px) {
+    .nav-opts {
+        font-size: 10px;
+        font-weight: normal;
+        text-decoration: none;
+    }
+    .login-nav {
+        font-size: 10px;
+        font-weight: normal;
+        text-decoration: none;
+    }
+    main {
+        width: 100%;
+    }
+    .hero {
+        margin: 1rem;
+    }
+    .welcomeLogin
+    {
+        color: var(--primary);
+        font-size: 20px;
+        font-weight: bold;
+        border: none;
+        background-color: transparent;
+        transition: 0.5s;
+    }
+    .hero-header 
+    {
+        width:40vh;
+    }
+    footer
+    {
+        width: 100%;
+    }
+    main
+    {
+        display: flex;
+        align-self: center;
+        justify-self: center;
+        padding-top: 3rem;
+    }
+    #welcomeLogin
+    {
+        color: var(--primary);
+        font-size: 1em;
+        font-weight: bold;
+        border: none;
+        background-color: transparent;
+        transition: 0.5s;
+    }
+}
