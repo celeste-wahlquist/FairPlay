@@ -87,3 +87,19 @@ footer a {
   }
 }
 
+.welcomeLogin
+{
+    color: var(--primary);
+    font-size: 1em;
+    font-weight: bold;
+    border: none;
+    background-color: transparent;
+    transition: 0.5s;
+}
+
+.welcomeLogin:hover
+{
+    cursor: pointer;
+    transform: translateY(-4px);
+    text-shadow: 0px 4px 6px rgba(0,0,0,0.3);
+}
