@@ -129,45 +129,33 @@ async function loadSongs(playlistId, accessToken) {
     }
 }
 
-function renderPlaylists(playlists, accessToken) {
-    // const container = document.getElementById('music-list');
-    // if (!playlists) {
-    //     container.innerHTML = "No playlists found.";
-    //     return;
-    // }
 
-    // container.innerHTML = playlists.map(pl => `
-    //     <li>
-    //         <a class="playlist-card" onclick="loadSongs('${pl.id, accessToken}')">
-    //             <img src="${pl.images[0]?.url || 'https://via.placeholder.com/60'}" alt="cover">
-    //             <div>
-    //                 <strong>${pl.name}</strong><br>
-    //             </div>
-    //         </a>
-    // `).join('');
+const renderPlaylists = (playlists, token) => {
+    // FIX: Define the container here so it's available to the code below
+    const container = document.getElementById('playlist-container'); 
+    
+    if (!container) {
+        console.error("Could not find element with id 'playlist-container'");
+        return;
+    }
 
-    // const container = document.getElementById('playlist-container');
-    // container.innerHTML = ''; // Clear previous
+    container.innerHTML = ''; // Clear existing content
 
     playlists.forEach(playlist => {
-        // 1. Create the element
+        // Now 'container' is defined in this scope, so this will work:
         const playlistEl = document.createElement('div');
-        playlistEl.className = 'playlist-card';
+        playlistEl.classList.add('playlist-card');
+        
         playlistEl.innerHTML = `
-            <img src="${playlist.images[0]?.url}" alt="${playlist.name}">
-            <h3>${playlist.name}</h3>
+            <img src="${playlist.images[0]?.url || ''}" alt="${playlist.name}">
+            <p>${playlist.name}</p>
         `;
 
-        // 2. Attach the listener directly to the object in memory
-        playlistEl.addEventListener('click', () => {
-            console.log(`Loading tracks for: ${playlist.name}`);
-            loadSongs(playlist.id, token); 
-        });
+        playlistEl.addEventListener('click', () => loadSongs(playlist.id, token));
 
-        // 3. Append to the DOM
-        container.appendChild(playlistEl);
+        container.appendChild(playlistEl); 
     });
-}
+};
 
 
 const init = async () => {
