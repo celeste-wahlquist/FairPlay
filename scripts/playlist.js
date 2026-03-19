@@ -96,30 +96,40 @@ async function fetchPlaylists(token) {
     renderPlaylists(data.items);
 }
 
-function loadSongs(playlistId) {
-    const container = document.getElementById('music-list');
-    
-    const playlist = allPlaylists.find(p => p.id === playlistId);
+async function loadSongs(playlistId, accessToken) {
+    let container = document.getElementById('playlist-tracks');
+    let tracks = [];
+    // Note: Ensure the URL uses the correct backticks for the variable template
+    let nextUrl = `https://api.spotify.com/v1/playlists/${playlistId}/tracks?limit=100`;
 
-    if (!playlist || !playlist.tracks) {
-        container.innerHTML = "<li>No songs found in this playlist.</li>";
-        return;
+    try {
+        while (nextUrl) {
+            const response = await fetch(nextUrl, {
+                headers: { 'Authorization': `Bearer ${accessToken}` }
+            });
+            const data = await response.json();
+            tracks = tracks.concat(data.items);
+            nextUrl = data.next;
+        }
+
+        // Build the HTML string first
+        let htmlContent = "";
+        for (let i = 0; i < tracks.length; i++) {
+            const trackName = tracks[i].track.name;
+            const artistName = tracks[i].track.artists[0].name;
+            
+            htmlContent += `
+                <p><strong>${i + 1}.</strong> ${trackName} - ${artistName}</p>
+            `;
+        }
+        container.innerHTML = htmlContent;
+
+    } catch (error) {
+        console.error("Failed to load tracks:", error);
     }
-    let html = []
-
-    html += `
-        <button onclick="renderPlaylists(allPlaylists)">← Back to Playlists</button>
-        <h3>${playlist.name}</h3>
-        ${playlist.tracks.map(track => `
-            <div class="song-item">
-                <span>${track.name}</span> - <em>${track.artist}</em>
-            </div>
-        `).join('')}
-    `;
-    container.innerHTML(html);
 }
 
-function renderPlaylists(playlists) {
+function renderPlaylists(playlists, accessToken) {
     const container = document.getElementById('music-list');
     if (!playlists) {
         container.innerHTML = "No playlists found.";
@@ -128,7 +138,7 @@ function renderPlaylists(playlists) {
 
     container.innerHTML = playlists.map(pl => `
         <li>
-            <a class="playlist-card" onclick="loadSongs('${pl.id}')">
+            <a class="playlist-card" onclick="loadSongs('${pl.id, accessToken}')">
                 <img src="${pl.images[0]?.url || 'https://via.placeholder.com/60'}" alt="cover">
                 <div>
                     <strong>${pl.name}</strong><br>
@@ -139,37 +149,42 @@ function renderPlaylists(playlists) {
 
 
 const init = async () => {
-
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
-    const loginContainer = document.querySelector(".login-container")
-
+    const storedToken = window.localStorage.getItem('access_token');
     
+    // 1. Handle Login Redirects
     document.getElementById('loginBtn').addEventListener('click', redirectToSpotify);
-
-    // const code = "5"; 
-
-    if (!code){
+    if (document.getElementById('welcomeLogin')) {
         document.getElementById('welcomeLogin').addEventListener('click', redirectToSpotify);
     }
-    else if(code === "5"){
-        console.log("Dev Mode triggered. Loading local JSON...");
 
+    // 2. Logic Branching
+    if (code === "5") {
+        // Dev Mode
         const response = await fetch('.//scripts/testplaylists.json');
-        console.log("dev mode")
         const data = await response.json();
-        renderPlaylists(data.items);
+        renderPlaylists(data.items, "mock_token"); 
 
-    } else {
-        console.log(code)
-        window.history.replaceState({}, document.title, window.location.pathname);
+    } else if (code) {
+        // Just returned from Spotify Auth
         const authData = await getAccessToken(code);
         if (authData.access_token) {
             window.localStorage.setItem('access_token', authData.access_token);
+            // Clean URL so the 'code' doesn't stay in the address bar
+            window.history.replaceState({}, document.title, window.location.pathname);
             fetchPlaylists(authData.access_token);
         }
+        
+    } else if (storedToken) {
+        // Returning user with a valid session
+        fetchPlaylists(storedToken);
+        
+    } else {
+        // New user, no code, no token: Show login UI
+        console.log("Waiting for login...");
     }
-};  
+};
 
 init();
 // console.log('hi')
