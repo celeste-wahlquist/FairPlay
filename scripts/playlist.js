@@ -101,7 +101,7 @@ async function loadSongs(playlistId, accessToken) {
     if (!container) return;
     let tracks = [];
     // Note: Ensure the URL uses the correct backticks for the variable template
-    let nextUrl = `https://api.spotify.com/v1/playlists/$${playlistId}/tracks?limit=100`;
+    let nextUrl = `https://api.spotify.com/v1/playlists/${playlistId}/tracks?limit=100`;
 
     try {
         while (nextUrl) {
