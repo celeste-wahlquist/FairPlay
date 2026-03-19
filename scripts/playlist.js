@@ -2,7 +2,7 @@
 
 const clientId = "3edfcb2cdb144a9796a8c39f5ce3730a"; 
 const redirectUri = 'https://fairplayer.netlify.app/playlist'; 
-const scope = 'playlist-read-private streaming user-read-playback-state user-modify-playback-state';
+const scope = 'playlist-read-private playlist-read-collaborative streaming user-read-playback-state user-modify-playback-state';
 // const redirectButton = document.getElementById("login-button")
 // const loggedIn = false;
 
@@ -59,7 +59,6 @@ async function redirectToSpotify() {
 
 async function getAccessToken(code) {
     const codeVerifier = window.localStorage.getItem('code_verifier');
-
     const response = await fetch('https://accounts.spotify.com/api/token', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -79,6 +78,7 @@ async function getAccessToken(code) {
         throw new Error(`Spotify Auth Failed: ${response.status}`);
     }
 
+    console.log("ACCESS TOKEN:", accessToken);
     return await response.json();
 }
 
