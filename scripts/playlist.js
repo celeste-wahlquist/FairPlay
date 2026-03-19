@@ -98,6 +98,7 @@ async function fetchPlaylists(token) {
 
 async function loadSongs(playlistId, accessToken) {
     let container = document.getElementById('playlist-tracks');
+    if (!container) return;
     let tracks = [];
     // Note: Ensure the URL uses the correct backticks for the variable template
     let nextUrl = `https://api.spotify.com/v1/playlists/${playlistId}/tracks?limit=100`;
@@ -107,6 +108,9 @@ async function loadSongs(playlistId, accessToken) {
             const response = await fetch(nextUrl, {
                 headers: { 'Authorization': `Bearer ${accessToken}` }
             });
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
             const data = await response.json();
             tracks = tracks.concat(data.items);
             nextUrl = data.next;
@@ -114,15 +118,20 @@ async function loadSongs(playlistId, accessToken) {
 
         // Build the HTML string first
         let htmlContent = "";
-        for (let i = 0; i < tracks.length; i++) {
-            const trackName = tracks[i].track.name;
-            const artistName = tracks[i].track.artists[0].name;
-            
-            htmlContent += `
-                <p><strong>${i + 1}.</strong> ${trackName} - ${artistName}</p>
-            `;
-        }
-        container.innerHTML = htmlContent;
+        tracks.forEach((item, index) => { 
+            if (item && item.track) {
+                // const trackName = tracks[i].track.name;
+                const trackName = item.track.name;
+                // const artistName = tracks[i].track.artists[0].name;
+                const artistName = item.track.artists[0]?.name || "Unknown Artist";
+
+
+                htmlContent += `
+                    <p><strong>${index + 1}.</strong> ${trackName} - ${artistName}</p>
+                `;
+            }
+        });
+        container.innerHTML = htmlContent || "<p>No tracks found.</p>";
 
     } catch (error) {
         console.error("Failed to load tracks:", error);
@@ -142,7 +151,6 @@ const renderPlaylists = (playlists, token) => {
     container.innerHTML = ''; // Clear existing content
 
     playlists.forEach(playlist => {
-        // Now 'container' is defined in this scope, so this will work:
         const playlistEl = document.createElement('div');
         playlistEl.classList.add('playlist-card');
         
@@ -161,13 +169,14 @@ const renderPlaylists = (playlists, token) => {
 const init = async () => {
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
-    const storedToken = window.localStorage.getItem('access_token');
+
     
     // 1. Handle Login Redirects
     document.getElementById('loginBtn').addEventListener('click', redirectToSpotify);
     if (document.getElementById('welcomeLogin')) {
         document.getElementById('welcomeLogin').addEventListener('click', redirectToSpotify);
     }
+    const storedToken = window.localStorage.getItem('access_token');
 
     // 2. Logic Branching
     if (code === "5") {
