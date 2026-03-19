@@ -93,7 +93,7 @@ async function fetchPlaylists(token) {
     }
 
     const data = await response.json();
-    renderPlaylists(data.items);
+    renderPlaylists(data.items, token);
 }
 
 async function loadSongs(playlistId, accessToken) {
