@@ -96,6 +96,29 @@ async function fetchPlaylists(token) {
     renderPlaylists(data.items);
 }
 
+function loadSongs(playlistId) {
+    const container = document.getElementById('music-list');
+    
+    const playlist = allPlaylists.find(p => p.id === playlistId);
+
+    if (!playlist || !playlist.tracks) {
+        container.innerHTML = "<li>No songs found in this playlist.</li>";
+        return;
+    }
+    let html = []
+
+    html += `
+        <button onclick="renderPlaylists(allPlaylists)">← Back to Playlists</button>
+        <h3>${playlist.name}</h3>
+        ${playlist.tracks.map(track => `
+            <div class="song-item">
+                <span>${track.name}</span> - <em>${track.artist}</em>
+            </div>
+        `).join('')}
+    `;
+    container.innerHTML(html);
+}
+
 function renderPlaylists(playlists) {
     const container = document.getElementById('music-list');
     if (!playlists) {
@@ -105,7 +128,7 @@ function renderPlaylists(playlists) {
 
     container.innerHTML = playlists.map(pl => `
         <li>
-            <a class="playlist-card" onclick="alert('Playlist ID: ${pl.id}')">
+            <a class="playlist-card" onclick="loadSongs('${pl.id}')">
                 <img src="${pl.images[0]?.url || 'https://via.placeholder.com/60'}" alt="cover">
                 <div>
                     <strong>${pl.name}</strong><br>
@@ -116,8 +139,6 @@ function renderPlaylists(playlists) {
 
 
 const init = async () => {
-
-    // console.log("Init is running!"); // Check if script is linkedy
 
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
@@ -130,7 +151,6 @@ const init = async () => {
 
     if (!code){
         document.getElementById('welcomeLogin').addEventListener('click', redirectToSpotify);
-        return
     }
     else if(code === "5"){
         console.log("Dev Mode triggered. Loading local JSON...");
