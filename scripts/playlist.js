@@ -132,10 +132,10 @@ async function loadSongs(playlistId, accessToken) {
 
 const renderPlaylists = (playlists, token) => {
     // FIX: Define the container here so it's available to the code below
-    const container = document.getElementById('playlist-container'); 
+    const container = document.getElementById('music-list'); 
     
     if (!container) {
-        console.error("Could not find element with id 'playlist-container'");
+        console.error("Could not find element with id 'music-list'");
         return;
     }
 
