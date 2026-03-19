@@ -188,16 +188,23 @@ const init = async () => {
         // Just returned from Spotify Auth
         const authData = await getAccessToken(code);
         if (authData.access_token) {
+            const expiresAt = Date.now() + (authData.expires_in * 1000);
             window.localStorage.setItem('access_token', authData.access_token);
+            window.localStorage.setItem('expires_at', expiresAt);
             // Clean URL so the 'code' doesn't stay in the address bar
             window.history.replaceState({}, document.title, window.location.pathname);
             fetchPlaylists(authData.access_token);
         }
         
     } else if (storedToken) {
-        // Returning user with a valid session
+        const expiresAt = Number(window.localStorage.getItem('expires_at'));
+        if (Date.now() < expiresAt) {
         fetchPlaylists(storedToken);
-        
+        } else {
+            console.log("Token expired. Re-authenticating...");
+            redirectToSpotify();
+        }
+        // Returning user with a valid sessiion
     } else {
         // New user, no code, no token: Show login UI
         console.log("Waiting for login...");
