@@ -78,7 +78,7 @@ async function getAccessToken(code) {
         throw new Error(`Spotify Auth Failed: ${response.status}`);
     }
 
-    console.log("ACCESS TOKEN:", accessToken);
+    // console.log("ACCESS TOKEN:", accessToken);
     return await response.json();
 }
 
