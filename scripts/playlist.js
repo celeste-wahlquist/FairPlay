@@ -130,21 +130,43 @@ async function loadSongs(playlistId, accessToken) {
 }
 
 function renderPlaylists(playlists, accessToken) {
-    const container = document.getElementById('music-list');
-    if (!playlists) {
-        container.innerHTML = "No playlists found.";
-        return;
-    }
+    // const container = document.getElementById('music-list');
+    // if (!playlists) {
+    //     container.innerHTML = "No playlists found.";
+    //     return;
+    // }
 
-    container.innerHTML = playlists.map(pl => `
-        <li>
-            <a class="playlist-card" onclick="loadSongs('${pl.id, accessToken}')">
-                <img src="${pl.images[0]?.url || 'https://via.placeholder.com/60'}" alt="cover">
-                <div>
-                    <strong>${pl.name}</strong><br>
-                </div>
-            </a>
-    `).join('');
+    // container.innerHTML = playlists.map(pl => `
+    //     <li>
+    //         <a class="playlist-card" onclick="loadSongs('${pl.id, accessToken}')">
+    //             <img src="${pl.images[0]?.url || 'https://via.placeholder.com/60'}" alt="cover">
+    //             <div>
+    //                 <strong>${pl.name}</strong><br>
+    //             </div>
+    //         </a>
+    // `).join('');
+
+    // const container = document.getElementById('playlist-container');
+    // container.innerHTML = ''; // Clear previous
+
+    playlists.forEach(playlist => {
+        // 1. Create the element
+        const playlistEl = document.createElement('div');
+        playlistEl.className = 'playlist-card';
+        playlistEl.innerHTML = `
+            <img src="${playlist.images[0]?.url}" alt="${playlist.name}">
+            <h3>${playlist.name}</h3>
+        `;
+
+        // 2. Attach the listener directly to the object in memory
+        playlistEl.addEventListener('click', () => {
+            console.log(`Loading tracks for: ${playlist.name}`);
+            loadSongs(playlist.id, token); 
+        });
+
+        // 3. Append to the DOM
+        container.appendChild(playlistEl);
+    });
 }
 
 
@@ -187,4 +209,3 @@ const init = async () => {
 };
 
 init();
-// console.log('hi')
