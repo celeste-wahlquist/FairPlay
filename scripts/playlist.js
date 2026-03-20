@@ -97,6 +97,17 @@ async function fetchPlaylists(token) {
 }
 
 async function loadSongs(playlistId, accessToken) {
+    if (!accessToken) {
+    console.error("No access token found");
+    redirectToSpotify();
+    return;
+    } 
+    const expiresAt = Number(localStorage.getItem('expires_at'));
+    if (Date.now() >= expiresAt) {
+        redirectToSpotify();
+        return;
+    }
+  
     let container = document.getElementById('playlist-tracks');
     if (!container) return;
     let tracks = [];
@@ -158,8 +169,11 @@ const renderPlaylists = (playlists, token) => {
             <p>${playlist.name}</p>
         `;
 
-        playlistEl.addEventListener('click', () => loadSongs(playlist.id, token));
-
+        playlistEl.addEventListener('click', () => {
+            const token = localStorage.getItem('access_token')
+        
+            loadSongs(playlist.id, token);
+        });
         container.appendChild(playlistEl); 
     });
 };
