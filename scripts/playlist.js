@@ -180,7 +180,7 @@ const init = async () => {
     // 2. Logic Branching
     if (code === "5") {
         // Dev Mode
-        const response = await fetch('.//scripts/testplaylists.json');
+        const response = await fetch('./scripts/testplaylists.json');
         const data = await response.json();
         renderPlaylists(data.items, "mock_token"); 
 
